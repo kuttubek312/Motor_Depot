@@ -41,10 +41,6 @@ public class Truck {
         return driver;
     }
 
-    public void setDriver(String driver) {
-        this.driver = driver;
-    }
-
     public State getState() {
         return state;
     }
@@ -53,7 +49,12 @@ public class Truck {
         this.state = state;
     }
 
-    public static Truck makeTruck(int id, String name, String driver, State state){
+    @Override
+    public String toString() {
+        return " " + id + " | " + name + " | " + driver + " | " + state;
+    }
+
+    public static Truck makeTruck(int id, String name, String driver, State state) {
         Truck truck = new Truck();
         truck.id = id;
         truck.name = name;
@@ -62,11 +63,12 @@ public class Truck {
         return truck;
     }
 
-   public static void printInfoTrack(Path path){
-       System.out.println("\n \tINFO ABOUT TRUCKS\n" +
-               "----------------------------------------\n +" +
-               "#  |    Bus         |  Driver      |  State\n +" +
-               "----------------------------------------");
+    public static void printInfoTrack(Path path) {
+        System.out.println("\n \tINFO ABOUT TRUCKS\n" +
+                "----------------------------------------\n +" +
+                "#  |    Bus         |  Driver      |  State\n +" +
+                "----------------------------------------");
+
        Truck[] trucks = GSON.fromJson(readFile(path),Truck[].class);
        for (Truck truck : trucks) {
            System.out.printf("%-1s |",truck.getId());
@@ -75,10 +77,9 @@ public class Truck {
            System.out.printf(" %-10s", truck.getState());
            System.out.println("-------------------------------------");
        }
+      // return printInfoTrack()
    }
 
-    @Override
-    public String toString() {
-        return " " + id + " | " + name + " | " + driver + " | " + state;
+
     }
-}
+
