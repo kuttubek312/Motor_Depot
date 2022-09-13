@@ -1,5 +1,12 @@
 package com.peaksoft;
 
+import com.google.gson.Gson;
+
+import java.nio.file.Path;
+
+import static com.peaksoft.JsonUtils.readFile;
+import static com.peaksoft.Main.GSON;
+
 public class Truck {
     private int id;
     private String name;
@@ -12,6 +19,7 @@ public class Truck {
 //        this.driver = driver;
 //        this.state = state;
 //    }
+
 
     public int getId() {
         return id;
@@ -46,16 +54,31 @@ public class Truck {
     }
 
     public static Truck makeTruck(int id, String name, String driver, State state){
-        Truck driver1 = new Truck();
-        driver1.id = id;
-        driver1.name = name;
-        driver1.driver = driver;
-        driver1.state = state;
-        return driver1;
+        Truck truck = new Truck();
+        truck.id = id;
+        truck.name = name;
+        truck.driver = driver;
+        truck.state = state;
+        return truck;
     }
+
+   public static void printInfoTrack(Path path){
+       System.out.println("\n \tINFO ABOUT TRUCKS\n" +
+               "----------------------------------------\n +" +
+               "#  |    Bus         |  Driver      |  State\n +" +
+               "----------------------------------------");
+       Truck[] trucks = GSON.fromJson(readFile(path),Truck[].class);
+       for (Truck truck : trucks) {
+           System.out.printf("%-1s |",truck.getId());
+           System.out.printf(" %-18s |", truck.getName());
+           System.out.printf(" %-10s|",  truck.getDriver());
+           System.out.printf(" %-10s", truck.getState());
+           System.out.println("-------------------------------------");
+       }
+   }
 
     @Override
     public String toString() {
-        return "Truck{" + "id=" + id + " name='" + name + "" + " driver='" + driver + "" + " state=" + state + '}';
+        return " " + id + " | " + name + " | " + driver + " | " + state;
     }
 }
