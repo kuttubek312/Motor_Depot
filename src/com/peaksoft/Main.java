@@ -8,6 +8,7 @@ import java.nio.file.*;
 import static com.peaksoft.Driver.printInfoDriver;
 import static com.peaksoft.JsonUtils.readFile;
 import static com.peaksoft.JsonUtils.write;
+import static com.peaksoft.Truck.printInfoTrack;
 
 public class Main {
     public static final GsonBuilder BUILDER = new GsonBuilder();
@@ -34,14 +35,14 @@ public class Main {
         System.out.println(readFile(PATH_TRUCKS));
         System.out.println(readFile(PATH_DRIVERS));
 
-        printInfoDriver(PATH_DRIVERS);
-       // printInfoTruck(PATH_TRUCKS);
 
+        printInfoTrack(PATH_TRUCKS);
+        printInfoDriver(PATH_DRIVERS);
 
 
         Truck[] trucks1 = GSON.fromJson(readFile(PATH_TRUCKS),Truck[].class);
         Driver[] drivers1 = GSON.fromJson(readFile(PATH_DRIVERS),Driver[].class);
-      //  searchTruck(trucks1,drivers1);
+       //searchTruck(trucks1,drivers1);
 
     }
 }

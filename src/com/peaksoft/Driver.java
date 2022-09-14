@@ -8,7 +8,7 @@ import static com.peaksoft.Main.GSON;
 public class Driver {
     private int id;
     private String name;
-    private String driver;
+    private String truckName;
 
 
 
@@ -21,11 +21,11 @@ public class Driver {
     }
 
     public String getDriver() {
-        return driver;
+        return truckName;
     }
 
     public void setDriver(String driver) {
-        this.driver = driver;
+        this.truckName = driver;
     }
 
     public String getName() {
@@ -41,28 +41,28 @@ public class Driver {
         return "Driver{" +
                 "id=" + id +
                 ", driver='" + name + '\'' +
-                ", name='" + driver + '\'' +
+                ", name='" + truckName + '\'' +
                 '}';
     }
 
-    public static Driver createDriver(int id, String driver, String name){
+    public static Driver createDriver(int id, String truckName, String name){
         Driver driver1 = new Driver();
         driver1.id = id;
         driver1.name = name;
-        driver1.driver = driver;
+        driver1.truckName = truckName;
         return driver1;
 
     }
     public static void printInfoDriver(Path path){
         System.out.println("\n \tINFO ABOUT DRIVERS\n" +
-                "-------+--------------------+---------\n " +
-                "#Driver    |       Bus     ");
+                "---------+--------------+---------\n " +
+                "# Driver       |Bus     ");
         Driver[] drivers = GSON.fromJson(readFile(path),Driver[].class);
         for (Driver driver : drivers) {
-            System.out.printf("%-1s | ",driver.getId());
-            System.out.printf(" %-10s  | " , driver.getDriver());
-            System.out.printf(" %-10s | ", driver.getName());
-            System.out.println("-----------------------------");
+            System.out.printf("%-1s| ",driver.getId());
+            System.out.printf(" %-11s |", driver.getName());
+            System.out.printf(" %-12s | " , driver.getDriver());
+            System.out.println("\n--------------------");
         }
     }
 }

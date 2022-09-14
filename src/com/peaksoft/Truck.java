@@ -13,14 +13,6 @@ public class Truck {
     private String driver;
     private State state;
 
-//    public Driver(int id, String name, String driver, State state) {
-//        this.id = id;
-//        this.name = name;
-//        this.driver = driver;
-//        this.state = state;
-//    }
-
-
     public int getId() {
         return id;
     }
@@ -41,6 +33,10 @@ public class Truck {
         return driver;
     }
 
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
     public State getState() {
         return state;
     }
@@ -51,7 +47,12 @@ public class Truck {
 
     @Override
     public String toString() {
-        return " " + id + " | " + name + " | " + driver + " | " + state;
+        return "Truck{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", driver='" + driver + '\'' +
+                ", state=" + state +
+                '}';
     }
 
     public static Truck makeTruck(int id, String name, String driver, State state) {
@@ -65,8 +66,8 @@ public class Truck {
 
     public static void printInfoTrack(Path path) {
         System.out.println("\n \tINFO ABOUT TRUCKS\n" +
-                "----------------------------------------\n +" +
-                "#  |    Bus         |  Driver      |  State\n +" +
+                "----------------------------------------\n " +
+                "# | Bus               |Driver     |State\n +" +
                 "----------------------------------------");
 
        Truck[] trucks = GSON.fromJson(readFile(path),Truck[].class);
@@ -74,12 +75,10 @@ public class Truck {
            System.out.printf("%-1s |",truck.getId());
            System.out.printf(" %-18s |", truck.getName());
            System.out.printf(" %-10s|",  truck.getDriver());
-           System.out.printf(" %-10s", truck.getState());
-           System.out.println("-------------------------------------");
+           System.out.printf(" on %-10s", truck.getState());
+           System.out.println("\n-------------------------------------");
        }
       // return printInfoTrack()
    }
-
-
-    }
+}
 
