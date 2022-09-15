@@ -42,7 +42,7 @@ public class Main {
 
         Truck[] trucks1 = GSON.fromJson(readFile(PATH_TRUCKS),Truck[].class);
         Driver[] drivers1 = GSON.fromJson(readFile(PATH_DRIVERS),Driver[].class);
-       //searchTruck(trucks1,drivers1);
+        searchTruck(trucks1,drivers1);
 
     }
 }
