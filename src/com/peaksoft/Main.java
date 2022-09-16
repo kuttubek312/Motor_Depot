@@ -9,6 +9,7 @@ import static com.peaksoft.Driver.printInfoDriver;
 import static com.peaksoft.JsonUtils.readFile;
 import static com.peaksoft.JsonUtils.write;
 import static com.peaksoft.Truck.printInfoTrack;
+import static com.peaksoft.TruckService.searchTruck;
 
 public class Main {
     public static final GsonBuilder BUILDER = new GsonBuilder();
