@@ -8,14 +8,15 @@ public class TruckService {
 
     public static void searchTruck(Truck[] trucks, Driver[] drivers) {
         Scanner scn = new Scanner(System.in);
-        System.out.println("Если хотите заврешить программу нажмите на 0");
+        System.out.println("Выберите truck: 1,2,3");
         while (true) {
-            System.out.println("Выберите truck: 1,2,3");
+            System.out.println("Если хотите заврешить программу нажмите на 0");
+            System.out.println("выберите грузавика 1 2 3 ");
             int truckNumber = scn.nextInt();
             if (truckNumber == 0) {
                 break;
             }
-            Truck chooseTruck = new Truck();
+            Truck chooseTruck =  new Truck();
             for (Truck truck : trucks) {
                 if (truck.getId() == truckNumber) {
                     chooseTruck = truck;
